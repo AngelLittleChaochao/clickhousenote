@@ -23,7 +23,7 @@ The printed error stack trace is very important and useful information for us to
 
 The error is thrown at StorageReplicatedMergeTree::cloneReplicaIfNeeded, we can check the [source code](https://clickhouse.tech/codebrowser/html_report/ClickHouse/src/Storages/StorageReplicatedMergeTree.cpp.html#_ZN2DB26StorageReplicatedMergeTree13dropPartitionERKNSt3__110shared_ptrINS_4IASTEEEbbNS2_INS_7ContextEEEb). From the source code, we found the "is_lost" znode will mark whether the replica is lost, but for the machines I have attatched data, I don't think it is lost, and the data should be transfered to its replicas.
 
-## Modify znode is_lost
+## Modify znode is_lost to 0
 I checked the is_lost znode(*zookeepr_part_znode*/replicas/*your_machine*/is_lost), all the replicas' is_lost is marked as 1. So I tried to mark the is_lost to 0 for the machines have data, then the data is automatically synced up. *(If you don't know how to get/set the znode information, the below section gives you the link to the zookeeper documents)*
 
 ## For new zookeeper users
