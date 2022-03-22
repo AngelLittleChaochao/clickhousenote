@@ -1,0 +1,22 @@
+strict graph {
+    node [shape=egg];
+    {
+        e_1 [label="ExpressionList"]
+        e_2 [label="ExpressionList"]
+        e_3 [label="ExpressionList"]
+        e_4 [label="ExpressionList"]
+        e_5 [label="ExpressionList"]
+    }
+    SelectWithUnionQuery -- e_1 -- SelectQuery -- e_2
+    e_2 -- Identifier_database
+    e_2 -- Identifier_name
+
+    SelectQuery -- TablesInSelectQuery -- TablesInSelectQueryElement -- TableExpression -- "TableIdentifier_system.tables"
+    SelectQuery -- Function_and -- e_3 -- Function_equals -- e_4
+    e_4 -- Identifier_database_1
+    e_4 -- Identifier_name_1
+
+    e_3 -- Function_greater -- e_5
+    e_5 -- Identifier_total_bytes
+    e_5 -- Literal_UINT64_1000
+}
