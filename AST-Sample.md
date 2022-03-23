@@ -26,7 +26,7 @@ SelectWithUnionQuery, 0x00007f0f64808318
 
 ## Case 2: column with expression
 
-Query: Select database, name, formatReadableSize(total_bytes) from system.tables
+Query: Select database, name, formatReadableSize(total_bytes), total_bytes/1000 from system.tables
 
 ```
 SelectWithUnionQuery, 0x00007feb5e610418
