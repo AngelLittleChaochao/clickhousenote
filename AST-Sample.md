@@ -114,5 +114,9 @@ SelectWithUnionQuery, 0x00007f2321e10318
 ![case 4](images/AST/case-4.png)
 
 
+### Why so many ExpressionList node?
+
+ExpressionList node can be as the root node of different part. For example, all the select columns can be organized by the ExpressionList. For example, all the WithElement can also be organized by the ExpressionList. It becomes easier with the ExpressList as the parent node of different parts.
+
 #### Draw Image
 The trees are drawn by [Graphviz](https://graphviz.org/doc/info/command.html), mannually write graph text now.
