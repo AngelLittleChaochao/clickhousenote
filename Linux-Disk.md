@@ -39,3 +39,42 @@ For Linux block, I referenced link [block](http://linuxintro.org/wiki/Blocks,_bl
 
 
 Since we have many parts, sometimes for one partitions, there are many parts folder. Also our table has too many columns. The result is that there are many files. More files, more extra disk wasting since each file will used several blocks.
+
+# inode
+
+In Linux/Unix systems, ‌inodes‌ (index nodes) are stored in a dedicated area of the disk partition called the ‌inode table‌. 
+
+1. ‌Physical Storage Location‌
+
+* ‌Disk Partition Layout‌:
+When a disk partition is formatted with a Linux filesystem (e.g., ext4, XFS, Btrfs), the partition is divided into two primary regions:
+
+‌Data Blocks‌: Stores the actual contents of files (text, images, binaries, etc.).
+
+‌Inode Table‌: A fixed, pre-allocated section near the start of the partition that stores all inodes.
+
+‌* Inode Table Allocation‌:
+
+The size and number of inodes are determined during filesystem creation (e.g., using mkfs).
+
+By default, inodes occupy ‌~1–2% of the total disk space‌ (adjustable via -i option in mkfs).
+
+2. ‌Logical Structure‌
+‌Inode Metadata‌:
+Each inode holds metadata about a file or directory, including:
+
+File type (regular file, directory, symlink, etc.)
+
+Permissions (read/write/execute)
+
+Ownership (UID and GID)
+
+Timestamps (creation, modification, access)
+
+Size of the file
+
+Pointers to the disk blocks storing the file’s data (direct, indirect, and doubly indirect blocks).
+
+‌No Filename Storage‌:
+
+Filenames and directory structures are stored in ‌directory entries‌ (dentries) within data blocks, not in the inode itself. A directory entry maps a filename to its corresponding inode number.
